@@ -72,10 +72,9 @@ public class ExamTest {
         });
 
         step("В поисковой выдаче отображаются релизы с искомым значением в названии", () -> {
-            TestPages.cardSearchPages.ProductCard()
-                    .shouldBe(visible);
+            TestPages.cardSearchPages.searchTextBlock()
+                    .shouldHave(text(searchValue));
         });
-        sleep(4000);
 
     }
 
@@ -92,7 +91,7 @@ public class ExamTest {
                 ),
                 arguments(
                         "Поисковой запрос по символам",
-                        "123"
+                        "колготки"
                 )
         );
     }
