@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
@@ -26,7 +27,19 @@ public class ExamTest {
     @Test
     @Story("Корзина")
     @DisplayName("Добавление товара в корзину")
-    public void AddToСartProductTest() {
+    public void AddToCartProductTest() {
+
+        step("Проскроллить экран главной до первой " +
+                "карточки продукта", () -> {
+            sleep(3000);
+            TestPages.mainPages.mainProductCard()
+                    .scrollTo();
+        });
+
+        step("Кликнуть по карточке товара на главной", () -> {
+            TestPages.mainPages.mainProductCard()
+                    .scrollTo();
+        });
 
         step("Кликнуть по карточке товара на главной", () -> {
             TestPages.mainPages.mainProductCard()
